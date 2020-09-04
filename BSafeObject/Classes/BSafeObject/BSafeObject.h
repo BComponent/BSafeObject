@@ -8,7 +8,12 @@
 
 #ifndef BSafeObject_h
 #define BSafeObject_h
+#import "NSArray+Safe.h"
 #import "NSObject+Swizzling.h"
-
+#import "NSDictionary+Safe.h"
+#import "NSMutableArray+Safe.h"
+#import "NSMutableDictionary+Safe.h"
+#import "NSMutableString+Safe.h"
+#import "NSObject+Swizzling.h"
 
 #endif /* BSafeObject_h */

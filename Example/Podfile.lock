@@ -1,0 +1,16 @@
+PODS:
+  - BSafeObject (0.1.0)
+
+DEPENDENCIES:
+  - BSafeObject (from `../`)
+
+EXTERNAL SOURCES:
+  BSafeObject:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BSafeObject: e7b53058436425804b4596d449ce6aa8f6720c16
+
+PODFILE CHECKSUM: 68a2166943172a955c533973ecdec4346e992d9e
+
+COCOAPODS: 1.9.1

@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/1250829271@qq.com/BSafeObject'
+  s.homepage         = 'https://github.com/BComponent/BSafeObject'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '1250829271@qq.com' => 'wangbaoming@log56.com' }
-  s.source           = { :git => 'https://github.com/1250829271@qq.com/BSafeObject.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/BComponent/BSafeObject.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'

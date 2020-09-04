@@ -63,10 +63,10 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8506325B556C7768A9A6E7BC /* Pods_BSafeObject_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSafeObject_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		900A0698583892032953002F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		900A0698583892032953002F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		918CEFA332576798FBA325D3 /* Pods-BSafeObject_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSafeObject_Example.release.xcconfig"; path = "Target Support Files/Pods-BSafeObject_Example/Pods-BSafeObject_Example.release.xcconfig"; sourceTree = "<group>"; };
-		E7F9E133F4F7371FE64EAB81 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		FE20BACA36EDA74D3AC69174 /* BSafeObject.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = BSafeObject.podspec; path = ../BSafeObject.podspec; sourceTree = "<group>"; };
+		E7F9E133F4F7371FE64EAB81 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		FE20BACA36EDA74D3AC69174 /* BSafeObject.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BSafeObject.podspec; path = ../BSafeObject.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,6 @@
 				23631BFED01B693507853B26 /* Pods-BSafeObject_Tests.debug.xcconfig */,
 				6E1DEBFC7F4057C79B873B8B /* Pods-BSafeObject_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -248,6 +247,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "1250829271@qq.com";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 93MKQCF6VP;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -258,6 +260,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -494,6 +497,7 @@
 			baseConfigurationReference = 3A5C9B66EADDC6125C12F85A /* Pods-BSafeObject_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93MKQCF6VP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BSafeObject/BSafeObject-Prefix.pch";
 				INFOPLIST_FILE = "BSafeObject/BSafeObject-Info.plist";
@@ -510,6 +514,7 @@
 			baseConfigurationReference = 918CEFA332576798FBA325D3 /* Pods-BSafeObject_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93MKQCF6VP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BSafeObject/BSafeObject-Prefix.pch";
 				INFOPLIST_FILE = "BSafeObject/BSafeObject-Info.plist";

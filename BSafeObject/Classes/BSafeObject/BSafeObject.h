@@ -15,5 +15,5 @@
 #import "NSMutableDictionary+Safe.h"
 #import "NSMutableString+Safe.h"
 #import "NSObject+Swizzling.h"
-
+#import "NSNull+Safe.h"
 #endif /* BSafeObject_h */

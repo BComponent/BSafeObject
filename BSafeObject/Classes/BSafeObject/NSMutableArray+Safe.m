@@ -9,14 +9,15 @@
 #import "NSMutableArray+Safe.h"
 #import <objc/runtime.h>
 #import "NSObject+Swizzling.h"
+#import "BSafe.h"
 
 @implementation NSMutableArray (Safe)
 
 #pragma mark --- init method
 
-#ifdef DEBUG
-
-#else   // release模式下不会发生崩溃
+//#ifdef DEBUG
+//
+//#else   // release模式下不会发生崩溃
 
 + (void)load {
     //只执行一次这个方法
@@ -64,7 +65,7 @@
     
 }
 
-#endif
+//#endif
 
 #pragma mark --- implement method
 
@@ -75,7 +76,15 @@
  @return 返回值
  */
 - (id)safeMutable_objectAtIndex:(NSUInteger)index {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_objectAtIndex:index];
+    }
     if (index >= self.count){
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     return [self safeMutable_objectAtIndex:index];
@@ -87,16 +96,32 @@
  @param range 移除 范围
  */
 - (void)safeMutable_removeObjectsInRange:(NSRange)range {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_removeObjectsInRange:range];
+    }
     
     if (range.location > self.count) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     
     if (range.length > self.count) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     
     if ((range.location + range.length) > self.count) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     
@@ -111,22 +136,41 @@
  @param range 范围
  */
 - (void)safeMutable_removeObject:(id)anObject inRange:(NSRange)range {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_removeObject:anObject inRange:range];
+    }
     if (range.location > self.count) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     
     if (range.length > self.count) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     
     if ((range.location + range.length) > self.count) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     
     if (!anObject){
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"NullKeyValueException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
-    
     
     return [self safeMutable_removeObject:anObject inRange:range];
     
@@ -139,11 +183,23 @@
  @param index 索引 index
  */
 - (void)safeMutable_insertObject:(id)anObject atIndex:(NSUInteger)index {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_insertObject:anObject atIndex:index];
+    }
     if (index > self.count) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     
     if (!anObject){
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"NullKeyValueException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     
@@ -158,7 +214,15 @@
  @return 返回值
  */
 - (id)safeMutable_objectAtIndexedSubscript:(NSUInteger)idx {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_objectAtIndexedSubscript:idx];
+    }
     if (idx >= self.count){
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     return [self safeMutable_objectAtIndexedSubscript:idx];

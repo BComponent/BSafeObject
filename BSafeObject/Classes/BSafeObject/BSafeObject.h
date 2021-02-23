@@ -16,4 +16,8 @@
 #import "NSMutableString+Safe.h"
 #import "NSObject+Swizzling.h"
 #import "NSNull+Safe.h"
+#import "NSObject+Method.h"
+#import "BSafeConfig.h"
+#import "BSafe.h"
+
 #endif /* BSafeObject_h */

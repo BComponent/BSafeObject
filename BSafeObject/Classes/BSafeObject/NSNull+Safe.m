@@ -7,13 +7,15 @@
 
 #import "NSNull+Safe.h"
 #import <objc/runtime.h>
+#import "BSafe.h"
+#import "NSObject+Swizzling.h"
 
 @implementation NSNull (Safe)
 
 
-#ifdef DEBUG
-
-#else   // release模式下不会发生崩溃
+//#ifdef DEBUG
+//
+//#else   // release模式下不会发生崩溃
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation{
      anInvocation.target = nil;
@@ -24,6 +26,10 @@
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector{
     @synchronized([self class])
     {
+        BSafe * safe = [BSafe shareManager];
+        if (!safe.config) {
+            return  nil;
+        }
         //look up method signature
         NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
         if (!signature)
@@ -81,6 +87,11 @@
                     if ([someClass instancesRespondToSelector:aSelector])
                     {
                         signature = [someClass instanceMethodSignatureForSelector:aSelector];
+                        
+                        NSString * threadStack = [self threadStack];
+                        NSString * reason = @"NullParamterException";
+                        NSString * crash = [NSString stringWithFormat:@"%@:Unrecognized Selector Sent to Instance--%@",reason,threadStack];
+                        [safe.config stackBlock:crash reason:reason];
                         break;
                     }
                 }
@@ -97,5 +108,5 @@
     }
 }
 
-#endif
+//#endif
 @end

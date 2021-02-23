@@ -9,13 +9,13 @@
 #import "NSMutableString+Safe.h"
 #import <objc/runtime.h>
 #import "NSObject+Swizzling.h"
-
+#import "BSafe.h"
 
 @implementation NSMutableString (Safe)
 
-#ifdef DEBUG
-
-#else   // release模式下不会发生崩溃
+//#ifdef DEBUG
+//
+//#else   // release模式下不会发生崩溃
 
 #pragma mark --- init method
 
@@ -80,7 +80,16 @@
  @return 截取的子字符串
  */
 - (NSString *)safeMutable_substringFromIndex:(NSUInteger)from {
+    
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_substringFromIndex:from];
+    }
     if (from > self.length ) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     return [self safeMutable_substringFromIndex:from];
@@ -95,7 +104,15 @@
  @return 返回截取的字符串
  */
 - (NSString *)safeMutable_substringToIndex:(NSUInteger)to {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_substringToIndex:to];
+    }
     if (to > self.length ) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     return [self safeMutable_substringToIndex:to];
@@ -114,19 +131,41 @@
  @return 返回搜索到的字符串 范围
  */
 - (NSRange)safeMutable_rangeOfString:(NSString *)searchString options:(NSStringCompareOptions)mask range:(NSRange)rangeOfReceiverToSearch locale:(nullable NSLocale *)locale {
+    
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_rangeOfString:searchString options:mask range:rangeOfReceiverToSearch locale:locale];
+    }
+    
     if (!searchString) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"NullKeyValueException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         searchString = self;
     }
     
     if (rangeOfReceiverToSearch.location > self.length) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         rangeOfReceiverToSearch = NSMakeRange(0, self.length);
     }
     
     if (rangeOfReceiverToSearch.length > self.length) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         rangeOfReceiverToSearch = NSMakeRange(0, self.length);
     }
     
     if ((rangeOfReceiverToSearch.location + rangeOfReceiverToSearch.length) > self.length) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         rangeOfReceiverToSearch = NSMakeRange(0, self.length);
     }
     
@@ -144,15 +183,33 @@
  @return 返回截取的字符串
  */
 - (NSString *)safeMutable_substringWithRange:(NSRange)range {
+   
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_substringWithRange:range];
+    }
+    
     if (range.location > self.length) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     
     if (range.length > self.length) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     
     if ((range.location + range.length) > self.length) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     return [self safeMutable_substringWithRange:range];
@@ -166,12 +223,22 @@
  @param aString 追加的字符串
  */
 - (void)safeMutable_appendString:(NSString *)aString {
+    
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_appendString:aString];
+    }
+    
     if (!aString) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"NullKeyValueException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     return [self safeMutable_appendString:aString];
 }
 
-#endif
+//#endif
 
 @end

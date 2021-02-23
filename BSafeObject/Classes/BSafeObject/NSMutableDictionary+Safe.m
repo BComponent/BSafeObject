@@ -9,11 +9,12 @@
 #import "NSMutableDictionary+Safe.h"
 #import <objc/runtime.h>
 #import "NSObject+Swizzling.h"
+#import "BSafe.h"
 
 @implementation NSMutableDictionary (Safe)
-#ifdef DEBUG
-
-#else   // release模式下不会发生崩溃
+//#ifdef DEBUG
+//
+//#else   // release模式下不会发生崩溃
 
 #pragma mark --- init method
 
@@ -50,7 +51,15 @@
  @param aKey key
  */
 - (void)safeMutable_removeObjectForKey:(id<NSCopying>)aKey {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_removeObjectForKey:aKey];
+    }
     if (!aKey) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"NullKeyValueException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     [self safeMutable_removeObjectForKey:aKey];
@@ -63,13 +72,25 @@
  @param aKey 键
  */
 - (void)safeMutable_setObject:(id)anObject forKey:(id<NSCopying>)aKey {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safeMutable_setObject:anObject forKey:aKey];
+    }
     if (!anObject) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"NullKeyValueException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     if (!aKey) {
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"NullKeyValueException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return;
     }
     return [self safeMutable_setObject:anObject forKey:aKey];
 }
-#endif
+//#endif
 @end

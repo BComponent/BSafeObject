@@ -7,12 +7,19 @@
 //
 
 #import "BAppDelegate.h"
+#import <BSafeObject.h>
 
 @implementation BAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+    BSafeConfig * faseConfig = [BSafeConfig new];
+    faseConfig.threadStackBlock = ^(NSString * _Nonnull exception, NSString * _Nonnull reason) {
+        NSLog(@"exception == %@",exception);
+    };
+    [BSafe starWithConfig:faseConfig];
     return YES;
 }
 

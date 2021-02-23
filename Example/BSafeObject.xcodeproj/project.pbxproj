@@ -21,6 +21,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		635E92DD25CB87D500BEA9F6 /* BMethedTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 635E92DC25CB87D500BEA9F6 /* BMethedTool.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		CC4BD43BF7154D498220EFFF /* Pods_BSafeObject_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEDB99BF0381DF5DFC7D103 /* Pods_BSafeObject_Example.framework */; };
@@ -58,6 +59,8 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		635E92DB25CB87D500BEA9F6 /* BMethedTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMethedTool.h; sourceTree = "<group>"; };
+		635E92DC25CB87D500BEA9F6 /* BMethedTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMethedTool.m; sourceTree = "<group>"; };
 		6CEDB99BF0381DF5DFC7D103 /* Pods_BSafeObject_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSafeObject_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E1DEBFC7F4057C79B873B8B /* Pods-BSafeObject_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSafeObject_Tests.release.xcconfig"; path = "Target Support Files/Pods-BSafeObject_Tests/Pods-BSafeObject_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* BViewController.h */,
 				6003F5A6195388D20070C39A /* BViewController.m */,
+				635E92DB25CB87D500BEA9F6 /* BMethedTool.h */,
+				635E92DC25CB87D500BEA9F6 /* BMethedTool.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -370,6 +375,7 @@
 				6003F59E195388D20070C39A /* BAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* BViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				635E92DD25CB87D500BEA9F6 /* BMethedTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

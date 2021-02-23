@@ -29,6 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
 originalSelector:(SEL)originalSelector
 swizzledSelector:(SEL)swizzledSelector;
 
+/**
+ *获取当前的堆栈信息
+ */
+- (NSString *)threadStack;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,14 +9,16 @@
 #import "NSArray+Safe.h"
 #import "NSObject+Swizzling.h"
 #import <objc/runtime.h>
+#import "BSafe.h"
+
 
 @implementation NSArray (Safe)
 
 #pragma mark --- init method
-
-#ifdef DEBUG
-
-#else   // release模式下不会发生崩溃
+//
+//#ifdef DEBUG
+//
+//#else   // release模式下不会发生崩溃
 
 + (void)load {
     //只执行一次这个方法
@@ -51,7 +53,7 @@
     
 }
 
-#endif
+//#endif
 
 
 #pragma mark --- implement method
@@ -63,7 +65,15 @@
  @return 返回值
  */
 - (id)safe_objectAtIndex:(NSUInteger)index {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safe_objectAtIndex:index];
+    }
     if (index >= self.count){
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     return [self safe_objectAtIndex:index];
@@ -77,7 +87,15 @@
  @return 返回值
  */
 - (id)safe_singleObjectAtIndex:(NSUInteger)index {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safe_singleObjectAtIndex:index];
+    }
     if (index >= self.count){
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     return [self safe_singleObjectAtIndex:index];
@@ -90,7 +108,15 @@
  @return 返回值
  */
 - (id)safe_ZeroObjectAtIndex:(NSUInteger)index {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safe_ZeroObjectAtIndex:index];
+    }
     if (index >= self.count){
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     return [self safe_ZeroObjectAtIndex:index];
@@ -103,10 +129,20 @@
  @return 返回值
  */
 - (id)safe_objectAtIndexedSubscript:(NSUInteger)idx {
+    BSafe * safe = [BSafe shareManager];
+    if (!safe.config) {
+        return [self safe_objectAtIndexedSubscript:idx];
+    }
     if (idx >= self.count){
+        NSString * threadStack = [self threadStack];
+        NSString * reason = @"IndexOutOfBoundsException";
+        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
+        [safe.config stackBlock:crash reason:reason];
         return nil;
     }
     return [self safe_objectAtIndexedSubscript:idx];
 }
+
+
 
 @end

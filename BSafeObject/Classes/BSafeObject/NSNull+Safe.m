@@ -87,11 +87,11 @@
                     if ([someClass instancesRespondToSelector:aSelector])
                     {
                         signature = [someClass instanceMethodSignatureForSelector:aSelector];
-                        
-                        NSString * threadStack = [self threadStack];
-                        NSString * reason = @"NullParamterException";
-                        NSString * crash = [NSString stringWithFormat:@"%@:Unrecognized Selector Sent to Instance--%@",reason,threadStack];
-                        [safe.config stackBlock:crash reason:reason];
+
+                        NSString * name = @"NSRangeException";
+                        NSString * reasonKey = @"NullParamterException";
+                        NSString * reason = [NSString stringWithFormat:@"%@:Unrecognized Selector Sent to Instance",reasonKey];
+                        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
                         break;
                     }
                 }

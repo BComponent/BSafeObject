@@ -86,10 +86,10 @@
         return [self safeMutable_substringFromIndex:from];
     }
     if (from > self.length ) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return nil;
     }
     return [self safeMutable_substringFromIndex:from];
@@ -109,10 +109,10 @@
         return [self safeMutable_substringToIndex:to];
     }
     if (to > self.length ) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return nil;
     }
     return [self safeMutable_substringToIndex:to];
@@ -138,34 +138,34 @@
     }
     
     if (!searchString) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"NullKeyValueException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"NullKeyValueException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Attempt to insert nil value",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         searchString = self;
     }
     
     if (rangeOfReceiverToSearch.location > self.length) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         rangeOfReceiverToSearch = NSMakeRange(0, self.length);
     }
     
     if (rangeOfReceiverToSearch.length > self.length) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         rangeOfReceiverToSearch = NSMakeRange(0, self.length);
     }
     
     if ((rangeOfReceiverToSearch.location + rangeOfReceiverToSearch.length) > self.length) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         rangeOfReceiverToSearch = NSMakeRange(0, self.length);
     }
     
@@ -190,26 +190,25 @@
     }
     
     if (range.location > self.length) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
-        return nil;
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];        return nil;
     }
     
     if (range.length > self.length) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return nil;
     }
     
     if ((range.location + range.length) > self.length) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return nil;
     }
     return [self safeMutable_substringWithRange:range];
@@ -230,10 +229,10 @@
     }
     
     if (!aString) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"NullKeyValueException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"NullKeyValueException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Attempt to insert nil value",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return;
     }
     return [self safeMutable_appendString:aString];

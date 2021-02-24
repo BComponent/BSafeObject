@@ -16,8 +16,9 @@
     // Override point for customization after application launch.
 
     BSafeConfig * faseConfig = [BSafeConfig new];
-    faseConfig.threadStackBlock = ^(NSString * _Nonnull exception, NSString * _Nonnull reason) {
-        NSLog(@"exception == %@",exception);
+    faseConfig.debugMode = YES;
+    faseConfig.threadStackBlock = ^(NSString * _Nonnull name, NSString * _Nonnull reasonKey, NSString * _Nonnull reason, NSArray * _Nonnull callStack, NSString * _Nonnull callStackString) {
+        NSLog(@"exception == %@",reason);
     };
     [BSafe starWithConfig:faseConfig];
     return YES;

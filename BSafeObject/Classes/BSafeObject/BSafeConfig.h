@@ -18,16 +18,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *threadStackBlock回调
- *exception 堆栈信息
- *rease 崩溃原因
+ *name 崩溃名称
+ *reasonKey 崩溃关键字
+ *reason 崩溃原因
+ *callStack 堆栈信息
+ *callStackString 堆栈信息
  */
-@property(nonatomic,copy) void (^threadStackBlock)(NSString * exception,NSString * reason);
+@property(nonatomic,copy) void (^threadStackBlock)(NSString * name,NSString * reasonKey,NSString * reason,NSArray * callStack,NSString * callStackString);
 /**
  *实现threadStackBlock回调
- *stack 堆栈信息
- *rease 崩溃原因
+ *name 崩溃name
+ *reason 崩溃原因
+ *reasonKey 崩溃原因key
  */
-- (void)stackBlock:(NSString *)stack reason:(NSString *)rease;
+- (void)stackBlock:(NSString *)name reason:(NSString *)reason reasonKey:(NSString *)reasonKey;
 @end
 
 NS_ASSUME_NONNULL_END

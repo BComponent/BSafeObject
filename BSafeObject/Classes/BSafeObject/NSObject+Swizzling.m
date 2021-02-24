@@ -44,20 +44,4 @@
 }
 
 
-- (NSString *)threadStack{
-    void* callstack[128];
-    int frames = backtrace(callstack, 128);
-    char **strs = backtrace_symbols(callstack, frames);
-    int len=sizeof(strs);
-    int i;
-    NSMutableArray *backtrace = [NSMutableArray arrayWithCapacity:frames];
-    for (i = 0;i < len;i++){
-        [backtrace addObject:[NSString stringWithUTF8String:strs[i]]];
-    }
-    free(strs);
-    NSString *threadStack = [[NSString alloc]initWithData:[NSJSONSerialization dataWithJSONObject:backtrace options:0 error:nil] encoding:NSUTF8StringEncoding];
-//    NSLog(@"=====>>>>>堆栈<<<<<=====\n%@",threadStack);
-    return threadStack;
-}
-
 @end

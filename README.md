@@ -45,6 +45,13 @@ pod 'BSafeObject'
 ```BSafeConfig * faseConfig = [BSafeConfig new];
 faseConfig.debugModel = YES;
 ```
+## 0.1.4
+### 使用说明
+1、如果要监听崩溃日志
+```faseConfig.threadStackBlock = ^(NSString * _Nonnull name, NSString * _Nonnull reasonKey, NSString * _Nonnull reason, NSArray * _Nonnull callStack, NSString * _Nonnull callStackString) {
+NSLog(@"exception == %@",reason);
+};
+```
 
 ## 异常说明
 方法不存在异常：NoSuchMethodException:Unrecognized Selector Sent to Instance

@@ -70,10 +70,10 @@
         return [self safe_objectAtIndex:index];
     }
     if (index >= self.count){
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return nil;
     }
     return [self safe_objectAtIndex:index];
@@ -92,10 +92,10 @@
         return [self safe_singleObjectAtIndex:index];
     }
     if (index >= self.count){
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return nil;
     }
     return [self safe_singleObjectAtIndex:index];
@@ -113,10 +113,10 @@
         return [self safe_ZeroObjectAtIndex:index];
     }
     if (index >= self.count){
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return nil;
     }
     return [self safe_ZeroObjectAtIndex:index];
@@ -134,10 +134,10 @@
         return [self safe_objectAtIndexedSubscript:idx];
     }
     if (idx >= self.count){
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"IndexOutOfBoundsException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"IndexOutOfBoundsException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return nil;
     }
     return [self safe_objectAtIndexedSubscript:idx];

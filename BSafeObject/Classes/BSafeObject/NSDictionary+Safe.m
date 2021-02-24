@@ -30,10 +30,10 @@
     NSUInteger rightCount = 0;
     for (NSUInteger i = 0; i < count; i++) {
         if (!(keys[i] && objects[i])) {
-            NSString * threadStack = [self threadStack];
-            NSString * reason = @"IndexOutOfBoundsException";
-            NSString * crash = [NSString stringWithFormat:@"%@:Out of bound--%@",reason,threadStack];
-            [safe.config stackBlock:crash reason:reason];
+            NSString * name = @"NSRangeException";
+            NSString * reasonKey = @"IndexOutOfBoundsException";
+            NSString * reason = [NSString stringWithFormat:@"%@:Out of bound",reasonKey];
+            [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
             break;
         }else{
             rightCount++;

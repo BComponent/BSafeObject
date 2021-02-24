@@ -56,10 +56,10 @@
         return [self safeMutable_removeObjectForKey:aKey];
     }
     if (!aKey) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"NullKeyValueException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"NullKeyValueException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Attempt to insert nil value",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return;
     }
     [self safeMutable_removeObjectForKey:aKey];
@@ -77,17 +77,17 @@
         return [self safeMutable_setObject:anObject forKey:aKey];
     }
     if (!anObject) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"NullKeyValueException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"NullKeyValueException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Attempt to insert nil value",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return;
     }
     if (!aKey) {
-        NSString * threadStack = [self threadStack];
-        NSString * reason = @"NullKeyValueException";
-        NSString * crash = [NSString stringWithFormat:@"%@:Attempt to insert nil value--%@",reason,threadStack];
-        [safe.config stackBlock:crash reason:reason];
+        NSString * name = @"NSRangeException";
+        NSString * reasonKey = @"NullKeyValueException";
+        NSString * reason = [NSString stringWithFormat:@"%@:Attempt to insert nil value",reasonKey];
+        [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
         return;
     }
     return [self safeMutable_setObject:anObject forKey:aKey];

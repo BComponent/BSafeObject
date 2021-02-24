@@ -29,7 +29,10 @@
 
 + (void)starWithConfig:(BSafeConfig *)config{
 #if DEBUG
-    //debug环境不拦截奔溃
+    if (config.debugMode == YES) {
+        BSafe * safe = [BSafe shareManager];
+        safe.config = config;
+    }
 #else
     BSafe * safe = [BSafe shareManager];
     safe.config = config;

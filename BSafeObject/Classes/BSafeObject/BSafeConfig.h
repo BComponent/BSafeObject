@@ -10,6 +10,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BSafeConfig : NSObject
+
+/**
+ *  SDK Debug开关, 默认关闭， Debug打开时会拦截debug模式下的崩溃
+ */
+@property (nonatomic, assign) BOOL debugMode;
+
 /**
  *threadStackBlock回调
  *exception 堆栈信息

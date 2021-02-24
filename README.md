@@ -39,6 +39,12 @@ pod 'BSafeObject'
   NSLog(@"exception == %@",exception);
 };
 ```
+## 0.1.3
+### 使用说明
+1、开启debug模式
+```BSafeConfig * faseConfig = [BSafeConfig new];
+faseConfig.debugModel = YES;
+```
 
 ## 异常说明
 方法不存在异常：NoSuchMethodException:Unrecognized Selector Sent to Instance

@@ -31,24 +31,32 @@ pod 'BSafeObject'
 1、只有relase环境会执行该库的功能，debug不执行
 2、在AppDelegate中导入 #import <BSafeObject.h>
 3、执行初始化代码
-```BSafeConfig * faseConfig = [BSafeConfig new];
+
+```
+BSafeConfig * faseConfig = [BSafeConfig new];
  [BSafe starWithConfig:faseConfig];
 ```
 4、如果要监听崩溃日志
-```faseConfig.threadStackBlock = ^(NSString * _Nonnull exception, NSString * _Nonnull reason) {
+
+```
+faseConfig.threadStackBlock = ^(NSString * _Nonnull exception, NSString * _Nonnull reason) {
   NSLog(@"exception == %@",exception);
 };
 ```
 ## 0.1.3
 ### 使用说明
 1、开启debug模式
-```BSafeConfig * faseConfig = [BSafeConfig new];
+
+```
+BSafeConfig * faseConfig = [BSafeConfig new];
 faseConfig.debugModel = YES;
 ```
 ## 0.1.4
 ### 使用说明
 1、如果要监听崩溃日志
-```faseConfig.threadStackBlock = ^(NSString * _Nonnull name, NSString * _Nonnull reasonKey, NSString * _Nonnull reason, NSArray * _Nonnull callStack, NSString * _Nonnull callStackString) {
+
+```
+faseConfig.threadStackBlock = ^(NSString * _Nonnull name, NSString * _Nonnull reasonKey, NSString * _Nonnull reason, NSArray * _Nonnull callStack, NSString * _Nonnull callStackString) {
 NSLog(@"exception == %@",reason);
 };
 ```

@@ -90,7 +90,8 @@
 
                         NSString * name = @"NSRangeException";
                         NSString * reasonKey = @"NullParamterException";
-                        NSString * reason = [NSString stringWithFormat:@"%@:Unrecognized Selector Sent to Instance",reasonKey];
+                        
+                        NSString * reason = [NSString stringWithFormat:@"%@:[NSNull %@] Unrecognized Selector Sent to Instance",reasonKey,NSStringFromSelector(aSelector)];
                         [safe.config stackBlock:name reason:reason reasonKey:reasonKey];
                         break;
                     }

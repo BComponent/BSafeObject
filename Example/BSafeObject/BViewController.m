@@ -19,9 +19,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     // 测试数组
-    NSArray *arr = @[@"1",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2"];
+//    NSArray *arr = @[@"1",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2"];
 //    NSMutableArray *tableArray = [[NSMutableArray alloc] initWithArray:arr];
-    NSLog(@"arr==%@===%@==%@",arr[1],[arr objectAtIndex:100],[arr objectAtIndexedSubscript:1]);
+//    NSLog(@"arr==%@===%@==%@",arr[1],[arr objectAtIndex:100],[arr objectAtIndexedSubscript:1]);
 //    NSLog(@"mutableArr==%@===%@==%@==%@",tableArray[100],[tableArray objectAtIndex:100],[tableArray objectAtIndexedSubscript:100],[tableArray objectsAtIndexes:[NSIndexSet indexSetWithIndex:1]]);
 //    [tableArray insertObject:nil atIndex:100];
 //    [tableArray removeObject:nil inRange:NSMakeRange(5, 1)];
@@ -49,6 +49,9 @@
     
 //    NSArray * nullArray = [NSNull new];
 //    NSLog(@"----%lu",(unsigned long)nullArray.count);
+    
+    BMethedTool * nullArray = [NSNull new];
+    NSLog(@"----%@",nullArray.name);
 }
 
 

@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BMethedTool : NSObject
 
+
+@property(nonatomic,strong)NSString * name;
+
 - (void)testMethed:(NSString *)test;
 
 @end
